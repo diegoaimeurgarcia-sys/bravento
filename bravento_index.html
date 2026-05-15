@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bravento Web Studio — Diseño web profesional en Valencia</title>
+  <meta name="description" content="Diseño web profesional y a medida en Valencia. Creamos sitios que convierten visitas en clientes."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:#f5f5f7;--white:#ffffff;--blue:#2a56e8;--blue-dark:#1a3fcf;
+      --text:#0d0d0d;--muted:#6b6b6b;--border:#e2e2e2;
+      --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+    a{text-decoration:none;color:inherit;}
+    .container{max-width:1100px;margin-inline:auto;padding-inline:48px;}
+    @media(max-width:768px){.container{padding-inline:24px;}}
+
+    /* NAV */
+    .nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding-block:16px;}
+    .nav-logo{display:flex;align-items:center;gap:10px;}
+    .nav-logo-text{display:flex;flex-direction:column;}
+    .nav-logo-name{font-family:var(--sans);font-size:18px;font-weight:700;letter-spacing:-0.3px;line-height:1;}
+    .nav-logo-name .blue{color:var(--blue);}
+    .nav-logo-sub{font-size:9px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);line-height:1;margin-top:2px;}
+    .nav-links{display:flex;gap:36px;list-style:none;}
+    .nav-links a{font-size:14px;font-weight:400;color:var(--text);transition:color .2s;}
+    .nav-links a:hover{color:var(--blue);}
+    .nav-btn{background:var(--blue);color:#fff;padding:10px 24px;border-radius:6px;font-size:14px;font-weight:500;transition:background .2s;}
+    .nav-btn:hover{background:var(--blue-dark);}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;}
+    .hamburger span{display:block;width:22px;height:1.5px;background:var(--text);margin:5px 0;}
+    @media(max-width:768px){
+      .nav-links{display:none;}.hamburger{display:block;}
+      .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:var(--white);align-items:center;justify-content:center;gap:32px;z-index:200;}
+      .nav-links.open a{font-size:20px;}
+    }
+
+    /* HERO */
+    .hero{background:var(--white);padding-block:80px 0;}
+    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+    .hero-left{padding-bottom:80px;}
+    .hero h1{font-family:var(--serif);font-size:clamp(36px,4.5vw,58px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--text);margin-bottom:20px;}
+    .hero-desc{font-size:16px;color:var(--muted);line-height:1.65;margin-bottom:36px;max-width:400px;}
+    .hero-wa-btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#fff;padding:14px 28px;border-radius:6px;font-size:14px;font-weight:600;transition:background .2s,transform .2s;}
+    .hero-wa-btn:hover{background:var(--blue-dark);transform:translateY(-1px);}
+    .laptop-wrap{width:100%;height:440px;background:linear-gradient(135deg,#e8e8e8,#d4d4d4);border-radius:8px 8px 0 0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+    .laptop-wrap::before{content:'';position:absolute;width:62%;height:64%;background:#c0c0c0;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.12);}
+    .laptop-wrap::after{content:'';position:absolute;width:72%;height:4px;background:#b0b0b0;border-radius:2px;bottom:18%;}
+    @media(max-width:900px){.hero-inner{grid-template-columns:1fr;}.laptop-wrap{display:none;}.hero-left{padding-bottom:60px;}}
+
+    /* PHILOSOPHY */
+    .philosophy{background:var(--white);padding-block:80px;border-top:1px solid var(--border);}
+    .philosophy-inner{display:grid;grid-template-columns:220px 1fr;gap:80px;align-items:start;}
+    .philosophy-label{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);padding-top:8px;}
+    .philosophy-right h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,44px);font-weight:700;line-height:1.15;margin-bottom:28px;}
+    .philosophy-right p{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:16px;}
+    .philosophy-sign{font-size:15px;color:var(--muted);font-style:italic;margin-top:24px;}
+    @media(max-width:768px){.philosophy-inner{grid-template-columns:1fr;gap:24px;}}
+
+    /* SERVICES */
+    .services{background:var(--bg);padding-block:72px;}
+    .services-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+    .services-top h2{font-family:var(--serif);font-size:clamp(22px,3vw,36px);font-weight:700;}
+    .services-count{font-size:13px;color:var(--muted);}
+    .services-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--border);background:var(--border);}
+    .service-card{background:var(--white);padding:32px 24px;gap:1px;transition:background .2s;}
+    .service-card:last-child{background:var(--bg);}
+    .service-card:hover{background:#eff4ff;}
+    .service-icon{margin-bottom:20px;}
+    .service-icon svg{width:28px;height:28px;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .service-card h3{font-size:15px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.3;}
+    .service-card p{font-size:13px;color:var(--muted);line-height:1.65;}
+    @media(max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:480px){.services-grid{grid-template-columns:1fr;}}
+
+    /* CTA BLUE */
+    .cta-blue{background:var(--blue);padding-block:88px;text-align:center;}
+    .cta-blue h2{font-family:var(--serif);font-size:clamp(32px,4vw,54px);font-weight:700;color:#fff;margin-bottom:20px;line-height:1.15;}
+    .cta-blue p{font-size:16px;color:rgba(255,255,255,.8);max-width:560px;margin-inline:auto;line-height:1.7;margin-bottom:40px;}
+    .wa-big-btn{display:inline-flex;align-items:center;gap:12px;background:#25d366;color:#fff;padding:16px 36px;border-radius:8px;font-size:15px;font-weight:600;transition:background .2s,transform .2s;}
+    .wa-big-btn:hover{background:#1ebe5d;transform:translateY(-2px);}
+    .wa-big-btn svg{width:20px;height:20px;fill:#fff;}
+
+    /* FOOTER */
+    .footer{background:var(--white);border-top:1px solid var(--border);padding-block:56px 24px;}
+    .footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid var(--border);margin-bottom:28px;}
+    .footer-tagline{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin:8px 0 14px;}
+    .footer-brand p{font-size:14px;color:var(--muted);line-height:1.7;}
+    .footer-col h4{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+    .footer-col p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:4px;}
+    .footer-icons{display:flex;gap:12px;margin-top:8px;}
+    .footer-icon{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s;}
+    .footer-icon:hover{border-color:var(--blue);}
+    .footer-icon svg{width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .footer-bottom p{font-size:12px;color:var(--muted);}
+    .footer-bottom-links{display:flex;gap:24px;}
+    .footer-bottom-links a{font-size:12px;color:var(--muted);transition:color .2s;}
+    .footer-bottom-links a:hover{color:var(--text);}
+    @media(max-width:768px){.footer-top{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;text-align:center;}}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.in{opacity:1;transform:none;}
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg width="36" height="28" viewBox="0 0 36 28" fill="none">
+          <path d="M2 22 C10 6, 26 4, 34 14" stroke="#2a56e8" stroke-width="4" stroke-linecap="round"/>
+          <path d="M2 28 C10 12, 26 10, 34 20" stroke="#0ea5e9" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="34" cy="14" r="3" fill="#2a56e8"/>
+        </svg>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">bra<span class="blue">vento</span></span>
+          <span class="nav-logo-sub">web studio</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <a class="nav-btn" href="https://wa.me/34689264572?text=Hola%2C%20me%20interesa%20crear%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank">Contactar</a>
+      <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-left reveal">
+          <h1>Elevamos la presencia digital de los negocios locales.</h1>
+          <p class="hero-desc">Diseño web profesional y a medida en Valencia. Creamos sitios que convierten visitas en clientes.</p>
+          <a class="hero-wa-btn" href="https://wa.me/34689264572?text=Hola%2C%20me%20interesa%20crear%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank">
+            Contactar por WhatsApp
+          </a>
+        </div>
+        <div class="reveal" style="transition-delay:.15s">
+          <img src="hero.jpg" alt="Bravento workspace" style="width:100%;height:440px;object-fit:cover;border-radius:8px 8px 0 0;"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="philosophy" id="nosotros">
+    <div class="container">
+      <div class="philosophy-inner reveal">
+        <div class="philosophy-label">Nuestra filosofía</div>
+        <div class="philosophy-right">
+          <h2>Diseño honesto, resultados reales.</h2>
+          <p>En Bravento, nos especializamos en crear páginas web personalizadas para pequeñas empresas y negocios locales.</p>
+          <p>Creemos tanto en nuestro trabajo que nos encargamos de todo, desde el diseño hasta la publicación, y tú no pagas nada hasta que la web esté online y estés 100% satisfecho.</p>
+          <p class="philosophy-sign">— Equipo Bravento, Diseño con alma en Valencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="servicios">
+    <div class="container">
+      <div class="services-top reveal">
+        <h2>Servicios Especializados</h2>
+        <span class="services-count">01 — 05</span>
+      </div>
+      <div class="services-grid reveal" style="transition-delay:.1s">
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3>Diseño Web Profesional</h3>
+          <p>Webs únicas y modernas adaptadas a tu marca.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+          <h3>Optimización Móvil</h3>
+          <p>Navegación fluida en cualquier dispositivo móvil.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Google Maps</h3>
+          <p>Posicionamos tu negocio localmente para clientes cercanos.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <h3>Pedidos por WhatsApp</h3>
+          <p>Sistemas de pedido directo para facilitar ventas.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+          <h3>Mantenimiento Continuo</h3>
+          <p>Tu web siempre al día, segura y funcionando al 100%.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-blue" id="contacto">
+    <div class="reveal">
+      <h2>¿Hablamos?</h2>
+      <p>Escríbenos por WhatsApp y empecemos a dar forma a tu proyecto. Sin compromiso, trato directo y humano.</p>
+      <a class="wa-big-btn" href="https://wa.me/34689264572?text=Hola%2C%20me%20interesa%20crear%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp: 689 264 572
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:6px;">
+          <svg width="32" height="25" viewBox="0 0 36 28" fill="none">
+            <path d="M2 22 C10 6, 26 4, 34 14" stroke="#2a56e8" stroke-width="4" stroke-linecap="round"/>
+            <path d="M2 28 C10 12, 26 10, 34 20" stroke="#0ea5e9" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="34" cy="14" r="3" fill="#2a56e8"/>
+          </svg>
+          <div class="nav-logo-text">
+            <span class="nav-logo-name">bra<span class="blue">vento</span></span>
+            <span class="nav-logo-sub">web studio</span>
+          </div>
+        </div>
+        <p class="footer-tagline">Valencia · Web Studio</p>
+        <p>Creando experiencias digitales excepcionales para los negocios de nuestra ciudad.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>689 264 572</p>
+        <p>bravento.webstudio@gmail.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Redes</h4>
+        <div class="footer-icons">
+          <div class="footer-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+          </div>
+          <div class="footer-icon">
+            <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Bravento Web Studio. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <p><em>Bravento Web Studio · Valencia</em></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e,i) => {
+      if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'),i*80); observer.unobserve(e.target); }
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
